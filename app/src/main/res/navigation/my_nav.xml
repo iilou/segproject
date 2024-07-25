@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/fragmentPortal">
+
+    <fragment
+        android:id="@+id/fragmentPortal"
+        android:name="com.example.myapplication.FragmentPortal"
+        android:label="fragment_portal"
+        tools:layout="@layout/fragment_portal" >
+        <action
+            android:id="@+id/action_fragmentPortal_to_fragmentLogin"
+            app:destination="@id/fragmentLogin" />
+        <action
+            android:id="@+id/action_fragmentPortal_to_fragmentSignup"
+            app:destination="@id/fragmentSignup" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentLogin"
+        android:name="com.example.myapplication.FragmentLogin"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_fragmentLogin_to_fragmentDashboardClient"
+            app:destination="@id/fragmentDashboardClient" />
+        <action
+            android:id="@+id/action_fragmentLogin_to_fragmentDashboardLandlord"
+            app:destination="@id/fragmentDashboardLandlord" />
+        <action
+            android:id="@+id/action_fragmentLogin_to_fragmentDashboardManager"
+            app:destination="@id/fragmentDashboardManager" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentSignup"
+        android:name="com.example.myapplication.FragmentSignup"
+        android:label="fragment_signup"
+        tools:layout="@layout/fragment_signup" >
+        <action
+            android:id="@+id/action_fragmentSignup_to_fragmentDashboardLandlord"
+            app:destination="@id/fragmentDashboardLandlord" />
+        <action
+            android:id="@+id/action_fragmentSignup_to_fragmentDashboardManager"
+            app:destination="@id/fragmentDashboardManager" />
+        <action
+            android:id="@+id/action_fragmentSignup_to_fragmentDashboardClient"
+            app:destination="@id/fragmentDashboardClient" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDashboardClient"
+        android:name="com.example.myapplication.FragmentDashboardClient"
+        android:label="fragment_dashboard_client"
+        tools:layout="@layout/fragment_dashboard_client" />
+    <fragment
+        android:id="@+id/fragmentDashboardLandlord"
+        android:name="com.example.myapplication.FragmentDashboardLandlord"
+        android:label="fragment_dashboard_landlord"
+        tools:layout="@layout/fragment_dashboard_landlord" />
+    <fragment
+        android:id="@+id/fragmentDashboardManager"
+        android:name="com.example.myapplication.FragmentDashboardManager"
+        android:label="fragment_dashboard_manager"
+        tools:layout="@layout/fragment_dashboard_manager" />
+</navigation>

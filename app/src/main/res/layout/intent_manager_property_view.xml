@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".IntentManagerPropertyView">
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="36dp" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Property" />
+
+        <TextView
+            android:id="@+id/imp_addr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="House At 25 Main St" />
+
+        <TextView
+            android:id="@+id/imp_landlord"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Landlord: Emily Li" />
+
+        <TextView
+            android:id="@+id/imp_client"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tenant: NONE" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="11dp" />
+
+        <Button
+            android:id="@+id/imp_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Property Details" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="28dp" />
+
+        <TextView
+            android:id="@+id/textView29"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ongoing Tickets" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/imp_back_c"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Back" />
+
+            <TextView
+                android:id="@+id/imp_label_c"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="1/10" />
+
+            <Button
+                android:id="@+id/imp_next_c"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Next" />
+
+            <Button
+                android:id="@+id/imp_view_c"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="View" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/imp_status_c"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Status: PENDING" />
+
+        <TextView
+            android:id="@+id/imp_type_c"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Type: INFESTATION" />
+
+        <TextView
+            android:id="@+id/imp_client_c"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tenant: Sam" />
+
+        <TextView
+            android:id="@+id/imp_urgency_c"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Urgency:" />
+
+        <TextView
+            android:id="@+id/imp_msg_c"
+            android:layout_width="match_parent"
+            android:layout_height="82dp"
+            android:text="Message:" />
+
+        <TextView
+            android:id="@+id/textView39"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Resolved Tickets" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/imp_back_p"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Back" />
+
+            <TextView
+                android:id="@+id/imp_label_p"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="1/5" />
+
+            <Button
+                android:id="@+id/imp_next_p"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Next" />
+
+            <Button
+                android:id="@+id/imp_view_p"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="View" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/imp_status_p"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Status: REJECTED" />
+
+        <TextView
+            android:id="@+id/imp_type_p"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Type: MAINTENANCE" />
+
+        <TextView
+            android:id="@+id/imp_date_p"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date Resolved:" />
+
+        <TextView
+            android:id="@+id/imp_rating_p"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rating: None Given" />
+
+        <TextView
+            android:id="@+id/imp_msg_p"
+            android:layout_width="match_parent"
+            android:layout_height="77dp"
+            android:text="Review Message:" />
+
+        <Button
+            android:id="@+id/imp_return"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Return to Dashboard" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

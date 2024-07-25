@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".IntentTicket">
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="25dp" />
+
+        <TextView
+            android:id="@+id/t_ticket_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ticket at ID: -O2fjv34jdfi23JD" />
+
+        <TextView
+            android:id="@+id/t_ticket_reason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reason for Ticket: Maintenance" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="24dp" />
+
+        <TextView
+            android:id="@+id/t_ticket_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Status: Pending Approval" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="11dp" />
+
+        <TextView
+            android:id="@+id/t_opening_message_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Opening Message: " />
+
+        <TextView
+            android:id="@+id/t_opening_message"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:text="Hi, I have a problem with my asdokfjsdoifjsdoifjoisdjfiosfsdf iojfaoisd jfoisdjfoi sdjfoip asjdf" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="135dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/t_back_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Back" />
+
+                <TextView
+                    android:id="@+id/t_message_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Message 2/5" />
+
+                <Button
+                    android:id="@+id/t_next_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Next" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/t_message_sender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Client (Client Name)" />
+
+            <TextView
+                android:id="@+id/t_message_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hey any updates on the fix" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/t_new_message"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:hint="New Message"
+            android:inputType="text|textMultiLine"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Space
+                android:layout_width="164dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/t_send_message_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Send Message" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="14dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/t_accept_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Accept" />
+
+            <Button
+                android:id="@+id/t_reject_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Reject" />
+
+            <Button
+                android:id="@+id/t_resolve_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Resolve" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/t_resolution_message"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:hint="Resolution Message"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Space
+                android:layout_width="157dp"
+                android:layout_height="10dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/t_confirm_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Confirm " />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <Button
+            android:id="@+id/t_done_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Done" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

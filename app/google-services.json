@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "814384959569",
+    "project_id": "rentron-ee388",
+    "storage_bucket": "rentron-ee388.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:814384959569:android:d918ded17e2de85e8ca870",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBam41P_NslBFVDBvX4fqq7NQ3huJvvG6c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
