@@ -437,7 +437,7 @@ public class FragmentDashboardLandlord extends Fragment {
                                                     user.addPropertyId(newRef.getKey());
                                                     systemInDatabaseRead = false;
                                                     currentPropertyIndex = propertyList.size()-1;
-                                                    updatePropertyView();
+                                                    refreshPropertyList(false);
                                                 }
                                             });
                                         }
@@ -487,6 +487,11 @@ public class FragmentDashboardLandlord extends Fragment {
                             Request newRequest = MEM.MEM_REQUEST.copy();
                             newRequest.setToData("propertyId", propertyList.get(currentPropertyIndex).getUid());
                             newRequest.setStatus("PENDING");
+
+                            if(propertyList.get(currentPropertyIndex).getUid().isEmpty()){
+                                Log.d("TAG", "proeprty list error");
+                                return;
+                            }
 
                             systemInDatabaseRead = true;
                             DatabaseReference newRef = ref.child("request").push();

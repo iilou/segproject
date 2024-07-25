@@ -6,6 +6,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DatabaseReference;
@@ -21,6 +25,7 @@ public class IntentManager extends AppCompatActivity {
     private TextView[] iman_names = new TextView[5];
     private TextView[] iman_ratings = new TextView[5];
     private Button[] iman_chooses = new Button[5];
+    private Button[] iman_details = new Button[5];
 
     private Button cancel;
 
@@ -34,6 +39,8 @@ public class IntentManager extends AppCompatActivity {
         Intent i = getIntent();
     }
 
+    ActivityResultLauncher<Intent> detailLauncher;
+
 
     private void renderBatch(){
         if(currentIndex >= umList.size()){
@@ -45,7 +52,7 @@ public class IntentManager extends AppCompatActivity {
         for(int i = currentIndex*5; i<currentIndex*5+5; i++){
             if(i < umList.size()) { // regular
                 iman_names[i%5].setText(umList.get(i).getFirstName() + " " + umList.get(i).getLastName());
-                iman_ratings[i%5].setText("Rating: " + Math.round(Math.random()*5)); // IMPLEMENT LATER
+                iman_ratings[i%5].setText("Rating: " + (umList.get(i).getScore()<0?"N/A":(""+umList.get(i).getScore()))); // IMPLEMENT LATER
 
                 iman_names[i%5].setVisibility(View.VISIBLE);
                 iman_ratings[i%5].setVisibility(View.VISIBLE);
@@ -93,25 +100,47 @@ public class IntentManager extends AppCompatActivity {
         iman_names[0] = findViewById(R.id.iman_name_0);
         iman_ratings[0] = findViewById(R.id.iman_rating_0);
         iman_chooses[0] = findViewById(R.id.iman_choose_0);
+        iman_details[0] = findViewById(R.id.iman_details_0);
 
         iman_names[1] = findViewById(R.id.iman_name_1);
         iman_ratings[1] = findViewById(R.id.iman_rating_1);
         iman_chooses[1] = findViewById(R.id.iman_choose_1);
+        iman_details[1] = findViewById(R.id.iman_details_1);
 
         iman_names[2] = findViewById(R.id.iman_name_2);
         iman_ratings[2] = findViewById(R.id.iman_rating_2);
         iman_chooses[2] = findViewById(R.id.iman_choose_2);
+        iman_details[2] = findViewById(R.id.iman_details_2);
 
         iman_names[3] = findViewById(R.id.iman_name_3);
         iman_ratings[3] = findViewById(R.id.iman_rating_3);
         iman_chooses[3] = findViewById(R.id.iman_choose_3);
+        iman_details[3] = findViewById(R.id.iman_details_3);
 
         iman_names[4] = findViewById(R.id.iman_name_4);
         iman_ratings[4] = findViewById(R.id.iman_rating_4);
         iman_chooses[4] = findViewById(R.id.iman_choose_4);
+        iman_details[4] = findViewById(R.id.iman_details_4);
+
+        detailLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+            @Override
+            public void onActivityResult(ActivityResult o) {
+
+            }
+        });
 
         for(int j = 0; j < 5; j++){
             addOnClick(iman_chooses[j], j);
+
+            int k = j;
+            iman_details[j].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MemUser.USER_2 = umList.get(k);
+                    Intent i = new Intent(IntentManager.this, IntentManagerItem.class);
+                    detailLauncher.launch(i);
+                }
+            });
         }
 
         iman_next.setOnClickListener(new View.OnClickListener() {

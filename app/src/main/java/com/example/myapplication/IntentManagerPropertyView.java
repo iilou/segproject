@@ -100,13 +100,15 @@ public class IntentManagerPropertyView extends AppCompatActivity {
         if(property.getClientUID().isEmpty()){
             impClient.setText("NO CURRENT TENANT");
         }
-        ref.child("users").child(property.getClientUID()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                UserClient ul = new UserClient(task.getResult());
-                impClient.setText("Current Tenant : " + ul.getFirstName() + " " + ul.getLastName());
-            }
-        });
+        else {
+            ref.child("users").child(property.getClientUID()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                    UserClient ul = new UserClient(task.getResult());
+                    impClient.setText("Current Tenant : " + ul.getFirstName() + " " + ul.getLastName());
+                }
+            });
+        }
     }
 
     private void updateCurrentTicket(){
@@ -116,10 +118,27 @@ public class IntentManagerPropertyView extends AppCompatActivity {
             impClientC.setVisibility(View.INVISIBLE);
             impUrgencyC.setVisibility(View.INVISIBLE);
             impMsgC.setVisibility(View.INVISIBLE);
+
+            impLabelC.setVisibility(View.INVISIBLE);
+            impBackC.setVisibility(View.INVISIBLE);
+            impNextC.setVisibility(View.INVISIBLE);
+            impViewC.setVisibility(View.INVISIBLE);
+            impBackC.setEnabled(false);
+            impNextC.setEnabled(false);
+            impViewC.setEnabled(false);
         } else {
             Ticket t = currentTicketList.get(currentTicketListIndex);
             impStatusC.setText("Status: " + t.getStatus());
             impTypeC.setText("Type: " + t.getType());
+
+            impLabelC.setVisibility(View.VISIBLE);
+            impBackC.setVisibility(View.VISIBLE);
+            impNextC.setVisibility(View.VISIBLE);
+            impViewC.setVisibility(View.VISIBLE);
+            impBackC.setEnabled(true);
+            impNextC.setEnabled(true);
+            impViewC.setEnabled(true);
+            impLabelC.setText((currentTicketListIndex+1) + "/" + currentTicketList.size());
 
             ref.child("users").child(t.getClientId()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                 @Override
@@ -141,8 +160,26 @@ public class IntentManagerPropertyView extends AppCompatActivity {
             impDateP.setVisibility(View.INVISIBLE);
             impRatingP.setVisibility(View.INVISIBLE);
             impMsgP.setVisibility(View.INVISIBLE);
+
+            impLabelP.setVisibility(View.INVISIBLE);
+            impBackP.setVisibility(View.INVISIBLE);
+            impNextP.setVisibility(View.INVISIBLE);
+            impViewP.setVisibility(View.INVISIBLE);
+            impBackP.setEnabled(false);
+            impNextP.setEnabled(false);
+            impViewP.setEnabled(false);
         } else {
             Ticket t = previousTicketList.get(previousTicketListIndex);
+
+            impLabelP.setVisibility(View.VISIBLE);
+            impBackP.setVisibility(View.VISIBLE);
+            impNextP.setVisibility(View.VISIBLE);
+            impViewP.setVisibility(View.VISIBLE);
+            impBackP.setEnabled(true);
+            impNextP.setEnabled(true);
+            impViewP.setEnabled(true);
+            impLabelP.setText((previousTicketListIndex+1) + "/" + previousTicketList.size());
+
             impStatusP.setText("Status: " + t.getStatus());
             impTypeP.setText("Type: " + t.getType());
             impDateP.setText("Date Resolved: " + t.getClosingTime());
@@ -196,6 +233,42 @@ public class IntentManagerPropertyView extends AppCompatActivity {
         updateCurrentTicket();
         updatePreviousTicket();
         renderProperty();
+
+        impNextC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(currentTicketList.isEmpty()) return;
+                currentTicketListIndex = (currentTicketListIndex + 1) % currentTicketList.size();
+                updateCurrentTicket();
+            }
+        });
+
+        impBackC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(currentTicketList.isEmpty()) return;
+                currentTicketListIndex = (currentTicketListIndex + currentTicketList.size() - 1) % currentTicketList.size();
+                updateCurrentTicket();
+            }
+        });
+
+        impNextP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(previousTicketList.isEmpty()) return;
+                previousTicketListIndex = (previousTicketListIndex + 1) % previousTicketList.size();
+                updatePreviousTicket();
+            }
+        });
+
+        impBackP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(previousTicketList.isEmpty()) return;
+                previousTicketListIndex = (previousTicketListIndex + previousTicketList.size() - 1) % previousTicketList.size();
+                updatePreviousTicket();
+            }
+        });
 
         propertyViewIntent = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
             @Override

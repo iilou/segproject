@@ -234,9 +234,11 @@ public class FragmentDashboardClient extends Fragment {
             ticketInteractionsValue.setVisibility(View.VISIBLE);
             ticketInteractionsValue.setText(""+t.getStatus());
 
+            boolean rated = t.getRating() >= 0;
             boolean rateable = !t.getStatus().equals("PENDING") && !t.getStatus().equals("ACCEPTED") && t.getRating() < 0;
-            scoreLabel.setVisibility(rateable?View.VISIBLE:View.INVISIBLE);
-            scoreInput.setVisibility(rateable?View.VISIBLE:View.INVISIBLE);
+            scoreLabel.setVisibility((rateable||rated)?View.VISIBLE:View.INVISIBLE);
+            scoreInput.setVisibility((rateable||rated)?View.VISIBLE:View.INVISIBLE);
+            if(rated) scoreInput.setText(""+t.getRating());
             rateButton.setEnabled(rateable);
             rateButton.setText("Rate Manager");
             rateButton.setVisibility(rateable?View.VISIBLE:View.INVISIBLE);
@@ -421,6 +423,7 @@ public class FragmentDashboardClient extends Fragment {
         updateProperty();
         updateTicket();
 
+        welcome.setText("Welcome " + user.getFirstName() + " " + user.getLastName() + " :D");
 
         return view;
     }
@@ -478,6 +481,7 @@ public class FragmentDashboardClient extends Fragment {
         rateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("TAG", ""+isCreatingNewTicket);
                 if(isCreatingNewTicket){ // ticket creation
                     if((""+ticketTypeValue.getText()).equals("") || (""+ticketUrgencyValue.getText()).equals("") || (""+ticketMessageValue.getText()).equals("")) return;
                     try{
@@ -537,16 +541,44 @@ public class FragmentDashboardClient extends Fragment {
                         }
                     });
                 } else { // ticket rate
-//                    Ticket curTicket = ticketList.get(currentTicketIndex);
-//                    if(!curTicket.getStatus().equals("PENDING") && !curTicket.getStatus().equals("ACCEPTED") && curTicket.getRating() < 0){
-//                        try{
-//                            double rating = Double.parseDouble(""+scoreInput.getText());
-//                            if(0 < rating || 5 > rating) return;
-//                            if(s)
-//                        }catch (NumberFormatException e){
-//                            Toast.makeText(requireContext(), "INVALID INPUT", Toast.LENGTH_LONG).show();
-//                        }
-//                    }
+                    Ticket curTicket = ticketList.get(currentTicketIndex);
+                    if(!curTicket.getStatus().equals("PENDING") && !curTicket.getStatus().equals("ACCEPTED") && curTicket.getRating() < 0){
+                        try{
+                            double rating = Double.parseDouble(""+scoreInput.getText());
+                            if(rating < 0 || rating > 5) return;
+
+                            Log.d("TAG",curTicket.getManagerId());
+                            // rating is proper
+                            // steps-> get manager -> set manager rating + set manager totalscores + set ticket score
+                            ref.child("users").child(curTicket.getManagerId()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                                    UserManager userManager = new UserManager(task.getResult());
+                                    Log.d("TAG", ""+userManager.getScore());
+                                    Log.d("TAG", ""+userManager.getTotalScores());
+
+                                    double score = userManager.getScore();
+                                    int totalScores = userManager.getTotalScores();
+
+                                    score *= totalScores;
+                                    score += rating;
+                                    totalScores += 1;
+                                    score /= totalScores;
+
+                                    curTicket.setRating(rating);
+                                    fillTicketView();
+                                    ref.child("ticket").child(curTicket.getUid()).child("rating").setValue(rating);
+                                    ref.child("users").child(userManager.getUID()).child("score").setValue(score);
+                                    ref.child("users").child(userManager.getUID()).child("totalScores").setValue(totalScores);
+                                }
+                            });
+
+
+                        }catch (NumberFormatException e){
+                            Toast.makeText(requireContext(), "INVALID INPUT", Toast.LENGTH_LONG).show();
+                            Log.d("TAG", "INVALID RATING");
+                        }
+                    }
                 }
             }
         });

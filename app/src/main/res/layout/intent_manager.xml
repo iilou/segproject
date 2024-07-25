@@ -57,37 +57,43 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <Button
+                    android:id="@+id/iman_details_0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Details" />
+
                 <TextView
                     android:id="@+id/iman_name_0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Bob Smandia" />
 
-                <TextView
-                    android:id="@+id/iman_rating_0"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Rating: 2.3" />
-
                 <Button
                     android:id="@+id/iman_choose_0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Choose" />
+
+                <TextView
+                    android:id="@+id/iman_rating_0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rating: 2.3" />
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/iman_name_1"
+                <Button
+                    android:id="@+id/iman_details_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:text="Details" />
 
                 <TextView
-                    android:id="@+id/iman_rating_1"
+                    android:id="@+id/iman_name_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="TextView" />
@@ -97,20 +103,27 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Choose" />
+
+                <TextView
+                    android:id="@+id/iman_rating_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView" />
+
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/iman_name_2"
+                <Button
+                    android:id="@+id/iman_details_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:text="Details" />
 
                 <TextView
-                    android:id="@+id/iman_rating_2"
+                    android:id="@+id/iman_name_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="TextView" />
@@ -120,20 +133,26 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Choose" />
+
+                <TextView
+                    android:id="@+id/iman_rating_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView" />
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/iman_name_3"
+                <Button
+                    android:id="@+id/iman_details_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:text="Details" />
 
                 <TextView
-                    android:id="@+id/iman_rating_3"
+                    android:id="@+id/iman_name_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="TextView" />
@@ -143,20 +162,26 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Choose" />
+
+                <TextView
+                    android:id="@+id/iman_rating_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView" />
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/iman_name_4"
+                <Button
+                    android:id="@+id/iman_details_4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:text="Details" />
 
                 <TextView
-                    android:id="@+id/iman_rating_4"
+                    android:id="@+id/iman_name_4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="TextView" />
@@ -166,6 +191,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Choose" />
+
+                <TextView
+                    android:id="@+id/iman_rating_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView" />
             </TableRow>
         </TableLayout>
 

@@ -16,4 +16,6 @@ public class MemUser {
             }
             return u;
     }
+
+    public static User USER_2 = null;
 }

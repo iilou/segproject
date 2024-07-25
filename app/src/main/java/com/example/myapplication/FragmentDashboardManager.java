@@ -78,6 +78,7 @@ public class FragmentDashboardManager extends Fragment {
         completions = 0;
         managerRequestList = new ArrayList<>();
         toggleManagerRequestVisibility(targetSize>0);
+        currentManagerRequestIndex = 0;
 
         if(targetSize == 0)  {
             if(depth) refreshPropertyList();
@@ -92,7 +93,6 @@ public class FragmentDashboardManager extends Fragment {
                         completions++;
                         managerRequestList.add(new Request(task.getResult()));
                         if(targetSize <= completions){
-                            currentManagerRequestIndex = 0;
                             updateManagerRequestView();
                             if(depth) refreshPropertyList();
                         }
@@ -105,6 +105,7 @@ public class FragmentDashboardManager extends Fragment {
         targetSize = user.getPropertyIdList().size();
         completions = 0;
         propertyList = new ArrayList<>();
+        currentPropertyIndex = 0;
         togglePropertyList(targetSize > 0);
         if(targetSize == 0){
             refreshPastPropertyList();
@@ -117,7 +118,6 @@ public class FragmentDashboardManager extends Fragment {
                         completions++;
                         propertyList.add(new Property(task.getResult()));
                         if(completions >= targetSize){
-                            currentPropertyIndex = 0;
                             updatePropertyList();
                             refreshPastPropertyList();
                         }
@@ -130,6 +130,7 @@ public class FragmentDashboardManager extends Fragment {
     public void refreshPastPropertyList(){
         targetSize = user.getPastPropertyIdList().size();
         completions = 0;
+        currentPastPropertyIndex = 0;
         pastPropertyList = new ArrayList<>();
         togglePastPropertyList(targetSize > 0);
 
@@ -141,7 +142,6 @@ public class FragmentDashboardManager extends Fragment {
                         completions++;
                         pastPropertyList.add(new Property(task.getResult()));
                         if(completions >= targetSize){
-                            currentPastPropertyIndex = 0;
                             updatePastPropertyList();
                         }
                     }
@@ -298,7 +298,7 @@ public class FragmentDashboardManager extends Fragment {
 
         findViews(view);
         refreshAllViews();
-
+        dbm_welcome.setText("Welcome " + user.getFirstName() + " " + user.getLastName() + " :D");
         return view;
     }
 
@@ -517,6 +517,28 @@ public class FragmentDashboardManager extends Fragment {
                         });
                     }
                 });
+            }
+        });
+
+        dbm_reject_r.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Request r = managerRequestList.get(currentManagerRequestIndex);
+
+                ref.child("users").child(r.getOriginID()).child("managerRequestIdList").child(r.getUid()).removeValue();
+                ref.child("users").child(r.getReceiverID()).child("managerRequestIdList").child(r.getUid()).removeValue();
+                ref.child("request").child(r.getUid()).removeValue();
+
+                ArrayList<String> mreqlist = user.getManagerRequestIdList();
+                for(int i = 0; i < mreqlist.size(); i++){
+                    if(mreqlist.get(i).equals(r.getUid())){
+                        mreqlist.remove(i);
+                        break;
+                    }
+                }
+                user.setManagerRequestIdList(mreqlist);
+                currentManagerRequestIndex = 0;
+                refreshManagerRequestList(false);
             }
         });
     }

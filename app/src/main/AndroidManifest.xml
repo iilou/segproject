@@ -19,6 +19,9 @@
             android:name=".IntentManager"
             android:exported="false" />
         <activity
+            android:name=".IntentManagerItem"
+            android:exported="false" />
+        <activity
             android:name=".IntentManagerPropertyView"
             android:exported="false" />
         <activity

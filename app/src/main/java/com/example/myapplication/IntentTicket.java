@@ -106,7 +106,7 @@ public class IntentTicket extends AppCompatActivity {
     }
 
     private void renderManagerView(Ticket ticket){
-
+        currentMessageIndex = 0;
         renderMessage();
 
         tTicketId.setText("Ticket at ID: " + ticket.getUid());

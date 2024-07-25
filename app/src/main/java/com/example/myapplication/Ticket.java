@@ -151,6 +151,8 @@ public class Ticket {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss 'UTC'");
         String formattedUTC = currentUTC.format(formatter);
 
+        this.status = "ACCEPTED";
+
         addMessage(false, "Your Property Manager has Rejected Your Ticket Concerning " + this.getType());
 
         this.status = "REJECTED";
